@@ -58,12 +58,13 @@ def copy_pic(image_id, tar_label):
 
 
 if __name__ == '__main__':
-    # tar_labels = ['train', 'test', 'val']
-    # for tar_label in tar_labels:
-    #     image_ids = open(PATH + f'ImageSets/Main/{tar_label}.txt').read().strip().split()
-    #     for image_id in image_ids:
-    #         convert_annotation(image_id, tar_label)
-    #         copy_pic(image_id, tar_label)
-    print(class_to_ind)
-    for cls in classes:
-        print(f'{class_to_ind[cls]}:{cls}')
+    tar_labels = ['train', 'test', 'val']
+    for tar_label in tar_labels:
+        image_ids = open(PATH + f'ImageSets/Main/{tar_label}.txt').read().strip().split()
+        for image_id in image_ids:
+            convert_annotation(image_id, tar_label)
+            copy_pic(image_id, tar_label)
+            
+    # print(class_to_ind)
+    # for cls in classes:
+    #     print(f'{class_to_ind[cls]}:{cls}')
