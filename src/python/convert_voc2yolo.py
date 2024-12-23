@@ -27,6 +27,8 @@ def convert(size, box):
 
 # 解析XML并转换标注
 def convert_annotation(image_id, tar_label):
+    if not os.path.exists(OUTPUT_PATH + f'{tar_label}/labels'):
+        os.makedirs(OUTPUT_PATH + f'{tar_label}/labels')
     in_file = open(PATH + f'Annotations/{image_id}.xml', encoding='UTF-8')
     out_file = open(OUTPUT_PATH + f'{tar_label}/labels/{image_id}.txt', 'w')
     tree = ET.parse(in_file)
@@ -48,6 +50,8 @@ def convert_annotation(image_id, tar_label):
 
 
 def copy_pic(image_id, tar_label):
+    if not os.path.exists(OUTPUT_PATH + f'{tar_label}/images'):
+        os.makedirs(OUTPUT_PATH + f'{tar_label}/images')
     source_path = PATH + f'JPEGImages/{image_id}.jpg'
     destination_path = OUTPUT_PATH + f'{tar_label}/images/{image_id}.jpg'
     if os.path.exists(source_path):
